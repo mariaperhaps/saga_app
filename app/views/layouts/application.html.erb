@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SagaApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="wrapper">
+	 <nav id="custom-nav" class="navbar navbar-default navbar-static-top">
+
+          <% if session[:user_id] %>
+            <%= link_to 'SAGA', user_path(session[:user_id]), id: 'logo' %>
+            <li class="btn btn-default login"><i id="login" class="fa fa-user"></i><%= link_to 'Logout', session_path, method: :delete %></li>
+          <% else %>
+            <%= link_to 'SAGA', root_path, id: 'logo' %>
+            <li class="login"><%= link_to 'Log In', login_path %></li>
+            <li class="signup"><%= link_to 'Sign Up', new_user_path %></li>
+          <% end %>
+
+  </nav>
+
+  <%= yield %>
+
+    <div class="push"></div>
+  </div>
+    <footer class="panel-footer footer">
+        &copy;2014 HiFive Group
+    </footer>
+
+
+</body>
+</html>

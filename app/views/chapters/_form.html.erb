@@ -1,0 +1,39 @@
+
+<%= form_for(@chapter) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :scope %><br>
+    <%= f.text_field :scope %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags %>
+  </div>
+    <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select(:category, [["Adreneline/Sport"], ["Milestones"], ["Travel"], ["Romance"], ["Food"], ["Education"], ["Culture"], ["Other"]]) %>
+  </div><br>
+
+  <div class="field">
+  <%= f.hidden_field(:saga_id, :value => @saga_id) %>
+  </div>
+  <div class="field">
+  <%= f.hidden_field(:secret, :value => 'secret') %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

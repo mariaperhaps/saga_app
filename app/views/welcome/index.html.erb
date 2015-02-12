@@ -1,0 +1,15 @@
+<div id="splash">
+	<% @chapters.sample(9).each do |chapter| %>
+	<div class="left">
+			<div class="overlay">
+				<% if session[:user_id] = nil %>
+					<a href="#"><%= chapter.title %></a>
+				<% else  %>
+					<a href="chapters/<%= chapter.id %>"><%= chapter.title %></a>
+				<% end %>
+				
+			</div> 
+			<img src="<%= chapter.image_url %>">
+	</div>
+	<% end %>
+</div>

@@ -1,0 +1,26 @@
+<section class="main">
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <strong>Title:</strong>
+	  <%= @comment.title %>
+	</p>
+
+	<p>
+	  <strong>Body:</strong>
+	  <%= @comment.body %>
+	</p>
+
+	<p>
+	  <strong>User:</strong>
+	  <%= @comment.user %>
+	</p>
+
+	<p>
+	  <strong>Chapter:</strong>
+	  <%= @comment.chapter %>
+	</p>
+
+	<%= link_to 'Edit', edit_comment_path(@comment) %> |
+	<%= link_to 'Back', comments_path %>
+</section>

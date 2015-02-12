@@ -1,0 +1,47 @@
+<section class="main">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @chapter.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @chapter.description %>
+  </p>
+
+  <p>
+    <strong>Image url:</strong>
+    <img src="<%= @chapter.image_url %>" width="400">
+  </p>
+
+  <p>
+    <strong>Scope:</strong>
+    <%= @chapter.scope %>
+  </p>
+
+  <p>
+    <strong>Tags:</strong>
+    <%= @chapter.tags %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @chapter.category %>
+  </p>
+  <span class="comments">
+    <label for="comments"> User Comments</label>
+    <% @comments.each do |comment| %>
+      <h1><%= comment.title %></h1>
+      <h2><%= comment.body %></h2>
+    <% end %>
+  </span>
+
+  <%= link_to 'Add a Comment', new_chapter_comment_path(@chapter.id) %>
+  <% if @current_user == session[:user_id] %>
+  <%= link_to 'Delete Chapter', chapter_path(@chapter.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Edit', edit_saga_chapter_path(@chapter.saga_id, @chapter) %> |
+  <% end %>
+  <%= link_to 'Back', user_path(session[:user_id]) %>
+</section>

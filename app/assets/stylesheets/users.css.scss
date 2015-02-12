@@ -1,0 +1,190 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 100%;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
+body a{
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+body li{
+  list-style: none;
+}
+
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.profile-info{
+  height: 500px;
+  top: 10px;
+  -webkit-box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+  -moz-box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+  box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+}
+
+.info-box, .saga-box {
+  height: 450px;
+  top: 23px;
+}
+
+.info-box {
+  border-right: solid black 1px;
+}
+
+.saga-box{
+  border-left: solid black 1px;
+}
+
+#profile-pic{
+  -webkit-box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+  -moz-box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+  box-shadow: 0px 1px 5px 2px rgba(89,80,89,0.38);
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+h3{
+
+  font-size: 1em;
+}
+
+p{
+  font-size: 10px;
+}
+
+.user-bar{
+  height: 100px;
+  background-color: aqua;
+  padding: 0;
+}
+
+div.user-bar li a{
+  display: inline-block;
+  color: white;
+}
+
+.user-squares{
+  border: solid 1px;
+  height: inherit;
+  text-align: center;
+  color: white;
+}
+
+.user-bar :hover{
+  background-color: fuchsia;
+  color: aqua;
+  text-decoration: none;
+}
+
+div.user-squares p {
+  text-align: center;
+  color: white;
+  margin-top: 15px;
+}
+
+#custom-nav{
+  margin-bottom: 0px;
+}
+
+i.fa{
+  font-size: 35px;
+}
+
+
+
+li.btn-default a{
+  color: black;
+}
+
+
+
+#login{
+  font-size: 20px;
+  padding-right: 5px;
+
+}
+
+.login{
+  float: right;
+  margin: 7px;
+}
+
+#new-saga{
+  float: left;
+  margin: 0;
+}
+
+#logo{
+  font-size: 35px;
+  font-weight: bolder;
+  color: aqua;
+  margin-left: 10px;
+}
+
+#pic{
+  height: 200px;
+}
+
+#profile-btns{
+  padding: 0;
+  display: inline-block;
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+#profile-btns li {
+  margin-bottom: 10px;
+}
+
+.wrapper{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+.footer, .push {
+  text-align: center;
+  height: 4em;
+  clear: both;
+}
+
+.image-container{
+  width: 40px;
+  height: 20px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.chapter{
+  width: 100%;
+}
+
+#chapter-title{
+  margin-left: 45px;
+}
+
+.chapter-container{
+  height: 25px;
+  padding-bottom: 5px;
+}
+
+#saga-title{
+  font-size: 20px;
+  font-weight: normal;
+}

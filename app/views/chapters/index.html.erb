@@ -1,0 +1,39 @@
+<section class="main">
+  <h1>What Other Adventurers Are Doing</h1>
+  <% @chapters.sample(9).each do |chapter| %>
+  <div class="chapter_ideas">
+  <%= chapter.title %>
+   <br><br>
+      <div class="thumb">
+    <img src="<%= chapter.image_url %>">
+  </div>
+  <br>
+    <%= form_for @chapter do |f| %>
+
+    <label>"Choose A Saga"</label>
+    <br><br>
+    <select name="saga">
+      <% @sagas.each do |saga| %>
+      <option value="<%= saga.title %>"><%= saga.title %></option>
+      <% saga = Saga.find_by(title: saga.title, user_id: session[:user_id]) %>
+      <% @saga_id = saga.id %>
+
+      <% end %>
+    </select>
+      <%= f.hidden_field(:title, :value => chapter.title) %>
+      <%= f.hidden_field(:description, :value => chapter.description) %>
+      <%= f.hidden_field(:image_url, :value => chapter.image_url) %>
+      <%= f.hidden_field(:scope, :value => chapter.scope) %>
+      <%= f.hidden_field(:tags, :value => chapter.tags) %>
+      <%= f.hidden_field(:category, :value => chapter.category )%>
+      <%= f.hidden_field(:saga_id, :value => @saga_id) %>
+      <%= f.hidden_field(:chapter_id, :value => chapter.id) %>
+
+      <br><br>
+    <div class="actions">
+      <%= f.submit "Add This Chapter" %>
+    </div>
+  <% end %>
+  </div>
+  <% end %>
+</section>

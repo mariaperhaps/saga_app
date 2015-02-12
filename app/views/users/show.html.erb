@@ -1,0 +1,153 @@
+<!-- <h1 style="color: red"><%= notice %></h1> -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="user-bar col-md-12">
+        <div class="col-md-3 user-squares">
+          <p><i class="fa fa-home"></i></p>
+            <li><%= link_to 'Home', user_path(session[:user_id]) %></li>
+        </div>
+        <div class="col-md-3 user-squares">
+          <p><i class="fa fa-users"></i></p>
+          <li><%= link_to "Meet Other Adventurers", users_path %></li>
+        </div>
+        <div class="col-md-3 user-squares">
+          <% if @user.id == session[:user_id] %>
+          <p><i class="fa fa-ship"></i></p>
+            <li><%= link_to "Create New Saga", new_saga_path, class: "saga_build" %></li>
+        </div>
+        <div class="col-md-3 user-squares">
+            <p><i class="fa fa-lightbulb-o"></i></p>
+            <li><%= link_to "Get Some Ideas", chapters_path, class: "saga_build" %></li>
+          <% end %>
+         </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="profile-info col-md-10 col-centered">
+          <div class="info-box col-md-6">
+                <img id="profile-pic" src="<%= @user.image_url %>" width="200px">
+              <ul id="profile-btns">
+                  <% if @user.id == session[:user_id] %>
+                    <li class="btn btn-default"><%= link_to 'Edit Profile', edit_user_path(@user) %></li><br>
+                    <li class="btn btn-default"><%= link_to 'Delete Profile', user_path(session[:user_id]), method: :delete, data: { confirm: 'Are you sure you want to delete your profile?' } %></li>
+                  <% end %>
+              </ul>
+            <div class="col-md-12">
+              <li>
+                <h3><strong>Name:</strong></h3>
+                <p><%= @user.name %></p>
+                <h3><strong>About me:</strong></h3>
+                <p><%= @user.about_me %></p>
+                <h3><strong>City:</strong></h3>
+                <p><%= @user.city %></p>
+            </div>
+          </div>
+
+          <div class="saga-box col-md-6">
+             <h1>SAGAS</h1>
+              <% if @sagas.length == 0 %>
+                <p>You Don't Have any Sagas yet</p>
+                <li id="new-saga" class="btn btn-default"><%=  link_to "Make one Now", new_saga_path %></li>
+              <% else %>
+                  <% @sagas.each do |saga| %> </br>
+                  <%= link_to(saga.title, saga_path(saga.id), :id => "saga-title") %>
+                      <% if current_user %>
+                        <%= link_to 'Edit', edit_saga_path(saga.id), :class => "btn btn-default"  %>
+
+
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                              Add A Chapter
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <%= form_for(@chapter) do |f| %>
+
+                                        <div class="field">
+                                          <%= f.label :title %><br>
+                                          <%= f.text_field :title %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.label :description %><br>
+                                          <%= f.text_field :description %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.label :image_url %><br>
+                                          <%= f.text_field :image_url %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.label :scope %><br>
+                                          <%= f.text_field :scope %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.label :tags %><br>
+                                          <%= f.text_field :tags %>
+                                        </div>
+                                          <div class="field">
+                                          <%= f.label :category %><br>
+                                          <%= f.select(:category, [["Adreneline/Sport"], ["Milestones"], ["Travel"], ["Romance"], ["Food"], ["Education"], ["Culture"], ["Other"]]) %>
+                                        </div><br>
+
+                                        <div class="field">
+                                        <%= f.hidden_field(:saga_id, :value => saga.id) %>
+                                        </div>
+                                        <div class="field">
+                                        <%= f.hidden_field(:secret, :value => 'secret') %>
+                                        </div>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                        <div class="actions">
+                                          <%= f.submit class: "btn btn-default"  %>
+                                        </div>
+                                      <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        <br><br>
+                      <% end %>
+                        <% @chapters.each do |chapter| %>
+                          <% if chapter.saga_id == saga.id %>
+                            <div class="chapter-container">
+                              <div class="image-container">
+                                <img class="chapter" src="<%= chapter.image_url %>" width="50px">
+                              </div>
+                                <li><%= link_to(chapter.title, chapter_path(chapter.id), :id => "chapter-title") %></li>
+                              </div>
+                        <% end %>
+                  <% end %>
+              <% end %>
+          <% end %>
+          </div>
+        </div>
+     </div>
+
+
+
+
+
+
+        <div class="right">
+
+
+        <br/>
+
+
+
+      </section>
+      <section class="main">
+
+      </section>
+    </div>
+</div>
